@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 if (len(sys.argv)!=2):
     sys.exit('No Cumple Formtato')
-n_cuerpos=int(sys.argv[1])
-data_final=np.loadtxt('final_{}.txt'.format(n_cuerpos))
+archivo=sys.argv[1]
+data_final=np.loadtxt(archivo)
 #METODOS
 #FUNCION DEL MODELO
 def modelo(lr, lrho_0,lr_0, alpha, beta):
