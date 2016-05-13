@@ -1,7 +1,7 @@
 #### Corre la simulacion con N=1000 y epsilon=0.01
 run : initial.txt final.txt
-	gcc a_with_leapfrog.c -lm
-	./a.out 1000 0.01
+	gcc n_body.c -lm
+	./a.out 200 0.1
 
 #### Crea el archivo (vacio) con datos iniciales
 initial.txt : 
