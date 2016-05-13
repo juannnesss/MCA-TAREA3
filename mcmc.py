@@ -1,7 +1,10 @@
 import sys, warnings
 import numpy as np
 import matplotlib.pyplot as plt
-
+if (len(sys.argv)!=2):
+    sys.exit('No Cumple Formtato')
+n_cuerpos=int(sys.argv[1])
+data_final=np.loadtxt('final_{}.txt'.format(n_cuerpos))
 #METODOS
 #FUNCION DEL MODELO
 def modelo(lr, lrho_0,lr_0, alpha, beta):
@@ -23,10 +26,10 @@ def mejorValor(pasos):
 #MCMC
 def mcmc(x_i,y_i):
     #Adivinando
-    lrho_0_0=3.0
-    lr_0_0=-1.0
-    alpha_0=1
-    beta_0=4.0
+    lrho_0_0=2.5
+    lr_0_0=2.0
+    alpha_0=-2.0
+    beta_0=10.0
     #inicializacion
     x_0=x_i
     y_0=modelo(x_0,lrho_0_0,lr_0_0,alpha_0,beta_0)
@@ -110,10 +113,7 @@ def radio(data):
     r = np.sqrt(x**2 + y**2 +z**2)
     r = np.sort(r)
     return r[1:]
-if (len(sys.argv)!=2):
-    sys.exit('No Cumple Formtato')
-n_cuerpos=int(sys.argv[1])
-data_final=np.loadtxt('final_{}.dat'.format(n_cuerpos))
+
 #x
 radio_final=radio(data_final)
 lradio_final=np.log10(radio_final)
@@ -131,10 +131,10 @@ plt.legend(loc='lower left')
 
 plt.savefig('perfil_densidad_datos.png')
 
-lrho_0_0=4.0
-lr_0_0=-1.0
-alpha_0=1
-beta_0=2.0
+lrho_0_0=2.5
+lr_0_0=2.0
+alpha_0=-2.0
+beta_0=10.0
 
 primer_ajuste=modelo(lr_centro,lrho_0_0,lr_0_0,alpha_0,beta_0)
 #grafica del tanteo
@@ -142,7 +142,7 @@ primer_ajuste=modelo(lr_centro,lrho_0_0,lr_0_0,alpha_0,beta_0)
 plt.figure()
 
 plt.plot(lr_centro, lrho, label='$\mathrm{data}$')
-plt.plot(lr_centro, primer_ajuste, label='$\mathrm{INICIAL}$')
+plt.plot(lr_centro, primer_ajuste, label='$\mathrm{inicial}$')
 
 plt.xlabel(r'$\log{(r)}$')
 plt.ylabel(r'$\log{(\rho (r))}$')
