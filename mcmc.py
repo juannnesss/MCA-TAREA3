@@ -23,10 +23,10 @@ def mejorValor(pasos):
 #MCMC
 def mcmc(x_i,y_i):
     #Adivinando
-    lrho_0_0=4.0
+    lrho_0_0=3.0
     lr_0_0=-1.0
     alpha_0=1
-    beta_0=2.0
+    beta_0=4.0
     #inicializacion
     x_0=x_i
     y_0=modelo(x_0,lrho_0_0,lr_0_0,alpha_0,beta_0)
