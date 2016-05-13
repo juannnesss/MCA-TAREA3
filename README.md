@@ -9,4 +9,4 @@ Integrantes
 ### Punto 1
 *make run*
 ### Punto 2
-*python mcmc.py N-particulas*
+*python mcmc.py nombrearchivo*
