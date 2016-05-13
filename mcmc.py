@@ -23,10 +23,10 @@ def mejorValor(pasos):
 #MCMC
 def mcmc(x_i,y_i):
     #Adivinando
-    lrho_0_0=4.0
+    lrho_0_0=3.0
     lr_0_0=-1.0
     alpha_0=1
-    beta_0=2.0
+    beta_0=4.0
     #inicializacion
     x_0=x_i
     y_0=modelo(x_0,lrho_0_0,lr_0_0,alpha_0,beta_0)
@@ -129,7 +129,7 @@ plt.xlabel(r'$\log{(r)}$')
 plt.ylabel(r'$\log{(\rho (r))}$')
 plt.legend(loc='lower left')
 
-plt.savefig('density_profile_data.png')
+plt.savefig('perfil_densidad_datos.png')
 
 lrho_0_0=4.0
 lr_0_0=-1.0
@@ -142,13 +142,13 @@ primer_ajuste=modelo(lr_centro,lrho_0_0,lr_0_0,alpha_0,beta_0)
 plt.figure()
 
 plt.plot(lr_centro, lrho, label='$\mathrm{data}$')
-plt.plot(lr_centro, primer_ajuste, label='$\mathrm{first\;guess}$')
+plt.plot(lr_centro, primer_ajuste, label='$\mathrm{INICIAL}$')
 
 plt.xlabel(r'$\log{(r)}$')
 plt.ylabel(r'$\log{(\rho (r))}$')
 plt.legend(loc='lower left')
 
-plt.savefig('density_profile_firstguess.png')
+plt.savefig('perfil_densidad_INICIAL.png')
 #grafica del ajuste final
 
 lrho_0,lr_0,alpha,beta,log_rho_0_std, log_r_c_std, alpha_std, beta_std=mcmc(lr_centro,lrho)
@@ -158,15 +158,15 @@ ajuste=modelo(lr_centro,lrho_0,lr_0,alpha, beta)
 plt.figure(figsize=(12,8))
 
 plt.plot(lr_centro, lrho, label='$\mathrm{data}$')
-plt.plot(lr_centro, ajuste, label='$\mathrm{fit}$')
+plt.plot(lr_centro, ajuste, label='$\mathrm{ajuste}$')
 
 plt.xlabel(r'$\log{(r)}$')
 plt.ylabel(r'$\log{(\rho (r))}$')
 plt.legend(loc='lower left')
 
-plt.savefig('density_profile_fit.png')
+plt.savefig('perfil_densidad_AJUSTE.png')
 
 print('log(rho_0) = {} +/- {}'.format(lrho_0, log_rho_0_std))
-print('log(r_c) = {} +/- {}'.format(lr_0, log_r_c_std))
+print('log(r_0) = {} +/- {}'.format(lr_0, log_r_c_std))
 print('alpha = {} +/- {}'.format(alpha, alpha_std))
 print('beta = {} +/- {}'.format(beta, beta_std))
