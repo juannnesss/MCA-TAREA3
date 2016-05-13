@@ -6,4 +6,7 @@ Integrantes
 * Camilo Sanabria
 
 ## Compilar
+### Punto 1
 *make run*
+### Punto 2
+*python mcmc.py N-particulas*
